@@ -23,10 +23,13 @@ function MovieCard({ data, type }) {
             <img src={`https://image.tmdb.org/t/p/w342${data.poster_path}`}
                 alt={title}
                 className="movie-img" />
-            <h3>{title}</h3>
-            <p>Titolo originale: {originalTitle}</p>
-            <p>Lingua: {flag}</p>
-            <p>Voto: {stars}</p>
+            <div className="overlay-info">
+                <h4>Titolo: {title}</h4>
+                <p>Titolo originale: {originalTitle}</p>
+                <p>Lingua: {flag}</p>
+                <p>Voto: {stars}</p>
+                <p>Overview: {data.overview}</p>
+            </div>
         </div>
     );
 }
