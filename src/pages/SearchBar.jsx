@@ -1,10 +1,15 @@
 function SearchBar() {
 
     return (
-        <div>
-            <input type="text" placeholder="Cerca un film o serie tv" />
-            <button>Cerca</button>
-        </div>
+        <header>
+            <div className="container search-bar">
+                <input
+                    type="text"
+                    placeholder="Cerca un film o serie tv"
+                    className="search-input" />
+                <button className="search-btn">Cerca</button>
+            </div>
+        </header>
     );
 }
 
