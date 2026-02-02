@@ -33,5 +33,10 @@ header {
 /* MOVIES PAGE */
 
 .movies-page h2 {
-  margin-top: 30px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.movies-list p {
+  text-align: center;
 }

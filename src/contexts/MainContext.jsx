@@ -1,12 +1,11 @@
-import { createContext, useContext, useState, useParams } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios"
 
 const MainContext = createContext();
 
-const API_KEY = import.meta.env.REACT_APP_API_KEY;
+const key = import.meta.env.VITE_API_KEY;
 
-const endpointMovies = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=it_IT&query=`;
-const endpointSeries = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=it_IT&query=`;
+console.log("Chiave API:", key);
 
 
 function MainProvider({ children }) {
@@ -20,15 +19,23 @@ function MainProvider({ children }) {
     // Funzione che esegue chiamata verso endpointMovies
     function fetchMovies(query) {
         if (!query) return; // non andare avanti se la query è vuota
-        axios.get(endpointMovies + query)
-            .then(response => setMovies(response.data.results))
+        const endpointMovies = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${encodeURIComponent(query)}`;
+
+        axios.get(endpointMovies)
+            .then(response => {
+                console.log(response.data);
+                setMovies(response.data.results || []);
+            })
+
             .catch(error => console.log("Errore nella richiesta"));
     }
 
     // Funzione che esegue chiamata verso endpointSeries
     function fetchSeries(query) {
         if (!query) return;
-        axios.get(endpointSeries + query)
+        const endpointSeries = `https://api.themoviedb.org/3/search/tv?api_key=${key}&query=${encodeURIComponent(query)}`;
+
+        axios.get(endpointSeries)
             .then(response => setSeries(response.data.results))
             .catch(error => console.log("Errore nella richiesta"));
     }

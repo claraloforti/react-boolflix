@@ -11,9 +11,10 @@ function SearchBar() {
 
     // Funzione per gestire il click sul bottone Cerca
     const handleSearch = () => {
-        if (!input.trim()) return; // Non andare avanti se l'input è vuoto
-        fetchMovies(input); // Chiamo funzioni del contesto per cercare film e serie
-        fetchSeries(input);
+        const query = input.trim();
+        if (!query) return; // Non andare avanti se l'input è vuoto
+        fetchMovies(query); // Chiamo funzioni del contesto per cercare film e serie
+        fetchSeries(query);
         setInput(""); // al click svuota in campo input
     };
 
