@@ -9,7 +9,9 @@ function MovieCard({ data, type }) {
         es: "🇪🇸",
         de: "🇩🇪",
         ja: "🇯🇵",
-        ru: "🇷🇺"
+        ru: "🇷🇺",
+        hi: "🇮🇳",
+        ko: "🇰🇷"
     };
 
     // Valori da mostrare per la lingua e per il voto
